@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".First"
+    android:gravity="left"
+    android:layout_marginTop="30dp"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WELCOME TO MY MINI MAP SERVICES"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="22dp"
+        android:paddingLeft="10dp"
+        android:layout_gravity="left"
+        android:layout_marginBottom="15dp">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="START YOUR JOURNEY BY ADDING YOUR FAVOURITE PLACES"
+        android:textColor="@color/black"
+        android:textSize="13dp"
+        android:paddingLeft="10dp"
+        android:layout_gravity="left"
+        android:layout_marginBottom="40dp"/>
+
+
+
+
+    <TextView
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:text="Choose Map Style Before Starting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp">
+
+    </TextView>
+
+    <RadioGroup
+        android:id="@+id/radioGrp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="clip_horizontal">
+
+
+        <RadioButton
+            android:id="@+id/normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#9A9898"
+            android:text="Normal View">
+
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/satellite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#9F9E9E"
+            android:text="Satellite View">
+
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/hybrid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#9F9E9E"
+            android:text="Hybrid View">
+
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/terrain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#9F9E9E"
+            android:text="Terrain View">
+
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/none"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#9F9E9E"
+            android:text="None">
+
+        </RadioButton>
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Location By Click On Add Button"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/currentLocation"
+        android:layout_gravity="center"
+        android:text="ADD Location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+
+        android:backgroundTint="@color/gray">
+
+    </Button>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click On Below Button To See List Of Location"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"/>
+    <Button
+        android:id="@+id/savedPlaces"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:text="List of location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/gray">
+
+    </Button>
+    <Button
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:text="Add Location"
+        android:backgroundTint="@color/gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </Button>
+
+</LinearLayout>
