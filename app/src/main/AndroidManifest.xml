@@ -15,10 +15,10 @@
         android:theme="@style/Theme.FA_suketu_c0836165_Android">
 
         <activity
-            android:name=".Fav"
+            android:name=".FavouriteList"
             android:exported="false"
             android:label="List Of Places"
-            android:parentActivityName=".First"/>
+            android:parentActivityName=".HomeView"/>
         <activity
             android:name=".MainActivity"
             android:exported="false"
@@ -29,7 +29,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".First"
+            android:name=".HomeView"
             android:exported="true"
             android:label="Home">
             <intent-filter>

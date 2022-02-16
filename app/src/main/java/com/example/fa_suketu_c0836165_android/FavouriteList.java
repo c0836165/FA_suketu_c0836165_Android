@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class Fav extends AppCompatActivity {
+public class FavouriteList extends AppCompatActivity {
     RecyclerView  recyclerView;
     DbHelper dbHelper;
     List<DataModel> allPlaces;
@@ -35,10 +35,10 @@ public class Fav extends AppCompatActivity {
     }
 
     private void getData() {
-        dbHelper=new DbHelper(Fav.this);
+        dbHelper=new DbHelper(FavouriteList.this);
         allPlaces =dbHelper.getAllPlaces();
 
-        adapter = new Adapter(Fav.this, allPlaces);
+        adapter = new Adapter(FavouriteList.this, allPlaces);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
@@ -67,7 +67,7 @@ public class Fav extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final MyViewHolder holder, final int position) {
             DataModel model = list.get(position);
-            holder.name.setText("Latitude: "+model.getLat()+"\n"+"Longitude: "+model.getLng()+"\n"+model.getPlaceName());
+            holder.name.setText("Latitude: "+model.getLat()+"\n"+"Longitude: "+model.getLng()+"\n"+ "Address :"+model.getPlaceName());
 
 
 
@@ -84,7 +84,7 @@ public class Fav extends AppCompatActivity {
             holder.edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent=new Intent(Fav.this, MainActivity.class);
+                    Intent intent=new Intent(FavouriteList.this, MainActivity.class);
                     intent.putExtra("TYPE","");
                     intent.putExtra("MODEL",model);
                     startActivity(intent);

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fav"
+    tools:context=".FavouriteList"
     android:id="@+id/recycler"
     tools:itemCount="2"
     tools:listitem="@layout/recycler_design"

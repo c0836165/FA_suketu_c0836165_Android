@@ -45,7 +45,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -59,17 +59,12 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle("Alert")
-                        .setMessage("Drag to update data")
-
-                        // Specifying a listener allows you to take an action before dismissing the dialog.
-                        // The dialog is automatically dismissed when a dialog button is clicked.
+                        .setMessage("Drag The Marker TO Update the Location")
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                // Continue with delete operation
+
                             }
                         })
-
-                        // A null listener allows the button to dismiss the dialog and take no further action.
                         .setNegativeButton(android.R.string.no, null)
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setCancelable(true)
@@ -79,17 +74,14 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle("Alert")
-                        .setMessage("Long click on map to insert data and show marker")
-
-                        // Specifying a listener allows you to take an action before dismissing the dialog.
-                        // The dialog is automatically dismissed when a dialog button is clicked.
+                        .setMessage("Long Press To Add data and visible marker")
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // Continue with delete operation
                             }
                         })
 
-                        // A null listener allows the button to dismiss the dialog and take no further action.
+
                         .setNegativeButton(android.R.string.no, null)
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setCancelable(true)
@@ -101,25 +93,10 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         dbHelper=new DbHelper(MainActivity.this);
-
         getLocation();
-
-
-
-
-
-
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -189,7 +166,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                             int latestlocIndex = locationResult.getLocations().size() - 1;
                             double lati = locationResult.getLocations().get(latestlocIndex).getLatitude();
                             double longi = locationResult.getLocations().get(latestlocIndex).getLongitude();
-                            Toast.makeText(MainActivity.this,"Current Address " + Utils.getAddress(lati , longi , MainActivity.this ).trim(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this,"CurrentAddress: " + Utils.getAddress(lati , longi , MainActivity.this ).trim(), Toast.LENGTH_SHORT).show();
 
                             Location location = new Location("providerNA");
                             location.setLongitude(longi);
@@ -197,7 +174,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                             if (mCurrLocationMarker != null) {
                                 mCurrLocationMarker.remove();
                             }
-                            //Place current location marker
+                            // inorder to place the current position marker on the map
                             LatLng latLng = new LatLng(lati, longi);
                             MarkerOptions markerOptions = new MarkerOptions();
                             markerOptions.position(latLng);
@@ -205,11 +182,11 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
                             mCurrLocationMarker = mMap.addMarker(markerOptions);
 
-                            //move map camera
+                            //function to move the map camera view
                             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                             mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
 
-                            //fetchaddressfromlocation(location);
+
 
                         } else {
 

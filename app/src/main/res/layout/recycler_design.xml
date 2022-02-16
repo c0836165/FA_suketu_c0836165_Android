@@ -13,12 +13,14 @@
         android:orientation="vertical"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/offwhite">
+
         <TextView
-            android:textSize="20dp"
-            android:textStyle="bold"
             android:id="@+id/name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="20dp"
+            android:textStyle="bold">
 
         </TextView>
 

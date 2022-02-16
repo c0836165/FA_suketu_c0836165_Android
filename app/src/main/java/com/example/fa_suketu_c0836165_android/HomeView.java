@@ -15,10 +15,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-public class First extends AppCompatActivity {
-    RadioButton normal,terrain,none, hybrid, satellite;
+public class HomeView extends AppCompatActivity {
+    RadioButton normalView, terrainView,none, hybridView, satelliteView;
     Button currentLocation,places;
-    String selectedMap="";
+    String selectedMapStyle ="";
     RadioGroup radioGrp;
 
     @Override
@@ -28,19 +28,17 @@ public class First extends AppCompatActivity {
 
         findIds();
 
-        // This overrides the radiogroup onCheckListener
+
         radioGrp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
             public void onCheckedChanged(RadioGroup group, int checkedId)
             {
-                // This will get the radiobutton that has changed in its check state
+
                 RadioButton checkedRadioButton = (RadioButton)group.findViewById(checkedId);
-                // This puts the value (true/false) into the variable
                 boolean isChecked = checkedRadioButton.isChecked();
-                // If the radiobutton that has changed in check state is now checked...
                 if (isChecked)
                 {
-                    selectedMap=checkedRadioButton.getText()+"";
+                    selectedMapStyle =checkedRadioButton.getText()+"";
                 }
             }
         });
@@ -48,17 +46,17 @@ public class First extends AppCompatActivity {
         currentLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(none.isChecked()==false&&normal.isChecked()==false
-                        &&terrain.isChecked()==false&&satellite.isChecked()==false
-                        &&hybrid.isChecked()==false){
-                    Toast.makeText(First.this, "Select map type", Toast.LENGTH_SHORT).show();
+                if(none.isChecked()==false&& normalView.isChecked()==false
+                        && terrainView.isChecked()==false&& satelliteView.isChecked()==false
+                        && hybridView.isChecked()==false){
+                    Toast.makeText(HomeView.this, "PLEASE CHOOSE ANY MAP STYLE TO PROCEED ", Toast.LENGTH_SHORT).show();
 
                 }else if(!getPermissison()){
                     getPermissison();
                 }
                 else{
-                    Intent intent=new Intent(First.this, MainActivity.class);
-                    intent.putExtra("TYPE",selectedMap);
+                    Intent intent=new Intent(HomeView.this, MainActivity.class);
+                    intent.putExtra("TYPE", selectedMapStyle);
                     intent.putExtra("MODEL","");
                     startActivity(intent);
                 }
@@ -68,7 +66,7 @@ public class First extends AppCompatActivity {
         places.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(First.this,Fav.class));
+                startActivity(new Intent(HomeView.this, FavouriteList.class));
             }
         });
     }
@@ -89,7 +87,7 @@ public class First extends AppCompatActivity {
         switch (requestCode) {
             case 1:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    startActivity( new Intent(First.this, MainActivity.class));
+                    startActivity( new Intent(HomeView.this, MainActivity.class));
                     finish();
                 }
                 break;
@@ -98,10 +96,10 @@ public class First extends AppCompatActivity {
 
     private void findIds() {
         none=findViewById(R.id.none);
-        normal=findViewById(R.id.normal);
-        terrain=findViewById(R.id.terrain);
-        hybrid=findViewById(R.id.hybrid);
-        satellite=findViewById(R.id.satellite);
+        normalView =findViewById(R.id.normal);
+        terrainView =findViewById(R.id.terrain);
+        hybridView =findViewById(R.id.hybrid);
+        satelliteView =findViewById(R.id.satellite);
         currentLocation=findViewById(R.id.currentLocation);
         places=findViewById(R.id.savedPlaces);
         radioGrp=findViewById(R.id.radioGrp);
